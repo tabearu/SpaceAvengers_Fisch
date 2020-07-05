@@ -21,7 +21,7 @@ public class script : MonoBehaviour
     void Start()
     {
         Debug.Log("Überraschung!");
-        testStadt();
+        //testStadt();
 
         fussgaenger();
     }
