@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿   using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,29 @@ public class City : MonoBehaviour
     Mesh meshCity;
     int size;
     int distance;
+    /*
+    bool[,] buildings = new bool[9,11]{
+        {true, false, true, true, true, true, true, true, false, false, true},
+        {true, false, true, true, true, true, true, true, false, false, true},
+        {true, false, false, false, false, false, false, false, false, false, false},
+        {true, false, false, false, false, false, false, false, false, false, false},
+        {true, false, true, true, true, true, true, true, false, false, true},
+        {true, false, true, true, true, true, true, true, false, false, true},
+        {false, false, false, false, false, false, false, false, false, false, false},
+        {false, false, false, false, false, false, false, false, false, false, false},
+        {true, false, true, true, true, true, true, true, false, false, true}
+    };*/
+    int[,] buildingSize = new int[9,11] {
+        {1, 0, 5, 4, 5, 5, 3, 2, 0, 0, 2},
+        {1, 0, 1, 4, 5, 5, 5, 3, 0, 0, 2},
+        {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {4, 0, 3, 4, 5, 5, 3, 2, 0, 0, 3},
+        {3, 0, 2, 3, 5, 4, 4, 3, 0, 0, 2},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {1, 0, 1, 3, 2, 2, 1, 3, 0, 0, 2}
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -38,20 +61,24 @@ public class City : MonoBehaviour
         int[] triangles = new int[30*100];
         int vtCount = 0;
         int trCount = 0;
-        int noIdea = 0;
-        for (int x = 0; x < 200; x += size+3){
-            for (int z = 0; z < 200; z += (size+distance)){
-                triangles = addTr(triangles, trCount, vtCount);
-                trCount += 30;
-                vertices = addVert(vertices, x, z, vtCount);
-                vtCount += 8;
-                noIdea++;
-                if (noIdea == 4){
-                    noIdea = 0;
+        int i = 0;
+        int j = 0;
+
+        for (int x = 0; x < 200 && i < 10; x += size+3){
+            for (int z = 0; z < 200 && j < 11; z += (size+distance)){
+                if (buildingSize[i, j] != 0){
+                    triangles = addTr(triangles, trCount, vtCount);
+                    trCount += 30;
+                    vertices = addVert(vertices, x, z, vtCount, (float)buildingSize[i,j]);
+                    vtCount += 8;
+                    Debug.Log("Building: " + i +  " " + j);
                 } else {
-                    z+=1;
+                    z+=distance;
                 }
+                j++;
             }
+            j = 0;
+            i++;
         }
         meshCity.vertices = vertices;
         meshCity.triangles = triangles;
@@ -63,9 +90,9 @@ public class City : MonoBehaviour
         rend.material.color = Color.grey;
     }
 
-    Vector3 [] addVert(Vector3[] vertices, float x, float z, int i){
-        float y = Random.Range(10.0f,60.0f);
+    Vector3 [] addVert(Vector3[] vertices, float x, float z, int i, float y){
         //Debug.Log("Rand: " + y);
+        y *= size;
 
         Vector3 a = new Vector3(x,0,z);
         Vector3 b = new Vector3(x,y,z);
