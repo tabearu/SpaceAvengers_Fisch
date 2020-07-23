@@ -78,15 +78,11 @@ public class City : MonoBehaviour
 
         Vector2[] uvs = new Vector2[vertices.Length];
         for (i = 0; i < uvs.Length; i++){
-            uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
-            
+            uvs[i] = new Vector2(vertices[i].x, vertices[i].y);           
         }
         meshCity.uv = uvs;
 
         Renderer rend = gameObject.GetComponent<Renderer> ();
-        //rend.material = new Material(Shader.Find("Specular")); 
-        //Texture texture = Resources.Load("Textures/Tower") as Texture;
-        //rend.material.mainTexture = texture;
         rend.material = Resources.Load("Materials/ApartmentBuilding") as Material;
 
         //rend.material.color = Color.grey;
