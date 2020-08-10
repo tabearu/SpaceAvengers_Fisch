@@ -30,7 +30,7 @@ public class AlexHome : MonoBehaviour
 
     void createWalls(){
         Vector3 [] vertices  = new Vector3[14];
-        int[] triangles = new int[42];
+        int[] triangles = new int[48];
 
         //Raum
         vertices[0] = new Vector3(8, 0, -5);
@@ -107,6 +107,14 @@ public class AlexHome : MonoBehaviour
             triangles[39] = 12;
             triangles[40] = 10;
             triangles[41] = 13;
+
+            //Dach
+            triangles[42] = 6;
+            triangles[43] = 13;
+            triangles[44] = 10;
+            triangles[45] = 11;
+            triangles[46] = 6;
+            triangles[47] = 10;
 
 
 
