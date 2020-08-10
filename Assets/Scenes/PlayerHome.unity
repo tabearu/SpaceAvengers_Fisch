@@ -708,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738069379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.06, y: 3.78, z: 0.037205935}
+  m_LocalPosition: {x: -6.06, y: 4, z: 0.037205935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1037,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.9
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
         type: 3}
@@ -1047,7 +1047,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
         type: 3}
@@ -1088,6 +1088,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1bb7cc70bbbdff842be495cfb907cd11,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1bb7cc70bbbdff842be495cfb907cd11,
         type: 3}
@@ -1488,7 +1503,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1544,7 +1559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028372736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 3.78, z: 0.037205935}
+  m_LocalPosition: {x: 2.25, y: 4, z: 0.037205935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
