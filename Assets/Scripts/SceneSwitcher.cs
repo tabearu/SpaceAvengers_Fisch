@@ -19,6 +19,9 @@ public class SceneSwitcher : MonoBehaviour
             case 3:
                 switchScene("PlayerHome");
                 break;
+            case 4:
+                switchScene("AlexHome");
+                break;
             default:
                 switchScene("dorfScene");
                 break;
