@@ -6,6 +6,11 @@ public class FirstPersonPlayer : MonoBehaviour
 {
 
     Camera camera;
+    float speedH = 2.0f;
+    float speedV = 2.0f;
+
+    float y = 0.0f;
+    float x = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,5 +40,9 @@ public class FirstPersonPlayer : MonoBehaviour
         if (Input.GetMouseButtonDown(1)){
             this.camera.transform.transform.Rotate(0,10.0f,0);
         } 
+        y += speedH * Input.GetAxis("Mouse X");
+        x -= speedV * Input.GetAxis("Mouse Y");
+
+        this.camera.transform.eulerAngles = new Vector3(x, y, 0.0f);
     }
 }
