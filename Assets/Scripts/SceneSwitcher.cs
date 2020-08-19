@@ -8,18 +8,20 @@ public class SceneSwitcher : MonoBehaviour
     public void HandleInputData(int val){
         switch (val){
             case 0:
-                switchScene("dorfScene");
                 break;
             case 1:
-                switchScene("City");
+                switchScene("dorfScene");
                 break;
             case 2:
-                switchScene("kanalisationScene");
+                switchScene("City");
                 break;
             case 3:
-                switchScene("PlayerHome");
+                switchScene("kanalisationScene");
                 break;
             case 4:
+                switchScene("PlayerHome");
+                break;
+            case 5:
                 switchScene("AlexHome");
                 break;
             default:
