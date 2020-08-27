@@ -14,6 +14,9 @@ public class PlayerHomeWalls : MonoBehaviour
         roomHeight = 4;
         CreateMesh();
         createWalls();
+        
+        //MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
+        //meshCollider.sharedMesh = mesh;
     }
 
     void CreateMesh(){
