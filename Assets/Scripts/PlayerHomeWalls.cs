@@ -15,8 +15,8 @@ public class PlayerHomeWalls : MonoBehaviour
         CreateMesh();
         createWalls();
         
-        //MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
-        //meshCollider.sharedMesh = mesh;
+        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = mesh;
     }
 
     void CreateMesh(){
