@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Models.meta
 guid: 8b33add0c76dab14981f02383d842c6d
+=======
+guid: 604dbbc238eafb2438d83ce026c29483
+>>>>>>> origin/antonia:Assets/Skripte.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
