@@ -57,12 +57,24 @@ public class LightByTime : MonoBehaviour
         if (currentTimeOfDayInSec >= timeInSecForGameDay) {
             currentTimeOfDayInSec = 0.0f;
             if (day){
-                lightDay.intensity = 0;
-                lightNight.intensity = 0.8f;
+                var sonne = 0.8f;
+                var mond = 0.2f;
+                for (int i  = 0; i < 5; i++){
+                    lightDay.intensity = sonne;
+                    lightNight.intensity = mond;
+                    mond = mond < 0.8f ? mond+0.2f : mond;
+                    sonne -= 0.2f;
+                }
                 day = false;
             } else {
-                lightDay.intensity = 1.0f;
-                lightNight.intensity = 0;
+                var sonne = 0.2f;
+                var mond = 0.6f;
+                for (int i  = 0; i < 5; i++){
+                    lightDay.intensity = sonne;
+                    lightNight.intensity = mond;
+                    mond = mond > 0 ? mond-0.2f : mond;
+                    sonne += 0.2f;
+                }
                 day = true;
             }
         } 
