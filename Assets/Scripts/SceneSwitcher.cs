@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class SceneSwitcher : MonoBehaviour
 {
     public Canvas canvas;
+    public Dropdown dropdown;
+
     void start(){
         canvas.GetComponent<Canvas>();
     }
+
     public void HandleInputData(int val){
         switch (val){
             case 0:
@@ -30,7 +33,8 @@ public class SceneSwitcher : MonoBehaviour
                 switchScene("AlexHome");
                 break;
             case 6:
-                canvas.gameObject.SetActive(false);
+                canvas.enabled = false;
+                dropdown.value = 0;
                 break;
             default:
                 switchScene("dorfScene");

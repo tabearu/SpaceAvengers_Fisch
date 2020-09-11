@@ -12,8 +12,8 @@ public class hinweis_blau : MonoBehaviour
     }
     void OnMouseOver(){
         if(Input.GetMouseButtonDown(0)){
-            Debug.Log("Click");
-            canvas.gameObject.SetActive(true);
+            //Debug.Log("Click");
+            canvas.enabled = true;
         }
        
     }

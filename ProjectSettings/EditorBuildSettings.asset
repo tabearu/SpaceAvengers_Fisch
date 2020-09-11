@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/kanalisationScene.unity
     guid: ac24d20f20f208547802a91bddf3bf95
+  - enabled: 1
+    path: Assets/Scenes/City.unity
+    guid: 24a0b3ad97de6894dba7dd60dc1f0ccb
+  - enabled: 1
+    path: Assets/Scenes/dorfScene.unity
+    guid: ff68bffbd702929448c72cbca84f5bc2
+  - enabled: 1
+    path: Assets/Scenes/PlayerHome.unity
+    guid: 2fea502e86266af40b00fe32e0e7e82f
   m_configObjects: {}

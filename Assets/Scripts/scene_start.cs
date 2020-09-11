@@ -9,6 +9,7 @@ public class scene_start : MonoBehaviour
     void Start()
     {
         canvas.GetComponent<Canvas>();
-        canvas.gameObject.SetActive(false);
+        //canvas.gameObject.SetActive(false);
+        canvas.enabled = false;
     }
 }
