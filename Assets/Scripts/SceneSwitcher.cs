@@ -8,7 +8,6 @@ public class SceneSwitcher : MonoBehaviour
 {
     public Canvas canvas;
     public Dropdown dropdown;
-
     void start(){
         canvas.GetComponent<Canvas>();
     }
