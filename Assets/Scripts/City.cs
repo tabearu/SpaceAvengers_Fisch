@@ -85,6 +85,8 @@ public class City : MonoBehaviour
         Renderer rend = gameObject.GetComponent<Renderer> ();
         rend.material = Resources.Load("Materials/ApartmentBuilding") as Material;
 
+        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = meshCity;
         //rend.material.color = Color.grey;
     }
 
