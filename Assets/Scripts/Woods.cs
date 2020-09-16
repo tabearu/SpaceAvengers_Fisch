@@ -7,6 +7,7 @@ public class Woods : MonoBehaviour {
     Mesh mesh;
     int amount = 20;
 
+    //TREESIZE, TREEWIDTH und TREEPOS benoetigen IMMER die selbe GROESSE
     int[] treeSize = {
         4,
         5,
@@ -30,7 +31,7 @@ public class Woods : MonoBehaviour {
         7
     };
     float[] treeWidth = {
-        0.5f,
+        1f,
         0.3f,
         0.5f,
         1f,
