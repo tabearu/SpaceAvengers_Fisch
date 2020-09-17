@@ -11,6 +11,7 @@ public class dorf : MonoBehaviour
 
     Mesh hMesh;
 
+    //Größe Häuser
     int a = 6;
     int b = 8;
     int y = 6;
