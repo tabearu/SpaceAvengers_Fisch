@@ -24,12 +24,6 @@ public class dorf : MonoBehaviour
         koordinatenHaeuser(); //Liste Startkoordinaten Häuser
         haeuser(); //erstellt Häuser von Dorf
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     void koordinatenHaeuser(){
         koordinaten.Add(new Vector3(16, 0, 1));
