@@ -8,7 +8,6 @@ public class cars : MonoBehaviour
     public GameObject auto;
     GameObject[] autosHighwayPos;
     GameObject[] autosHighwayNeg;
-    GameObject[] autosEinbahn;
     GameObject[] autosNormalPos;
     GameObject[] autosNormalNeg;
 
@@ -17,7 +16,6 @@ public class cars : MonoBehaviour
     {       
         autosHighwayPos = new GameObject[4];
         autosHighwayNeg = new GameObject[4];
-        autosEinbahn = new GameObject[5];
         autosNormalPos = new GameObject[5];
         autosNormalNeg = new GameObject[4];
         int j = 0;
@@ -34,11 +32,7 @@ public class cars : MonoBehaviour
                 autosHighwayNeg[j] = createCars(x,z,180f);
                 j++;
             } else if(i < 13){
-                j = i == 8 ? 0 : j;
-                float z = i < 10 ? 130f : 170f;
-                float x = Random.Range(0f, 200.0f);
-                autosEinbahn[j] = createCars(x,z,0);
-                j++;
+               
             } else if (i < 18) {
                 j = i == 13 ? 0 : j;
                 float x = i < 16 ? 152f : 59f;
@@ -114,12 +108,7 @@ public class cars : MonoBehaviour
             x = x < 0 ? 200 : x;
             autosHighwayNeg[i].transform.position = new Vector3(x + 0.25f, autosHighwayNeg[i].transform.position.y, autosHighwayNeg[i].transform.position.z);
         }
-        for (int i = 0; i < autosEinbahn.Length; i++){
-            var x = autosEinbahn[i].transform.position.x;
-            x = x > 200 ? 0 : x;
-            x = x < 0 ? 200 : x;
-            autosEinbahn[i].transform.position = new Vector3(x - 0.25f, autosEinbahn[i].transform.position.y, autosEinbahn[i].transform.position.z);
-        }
+        
         for (int i = 0; i < autosNormalPos.Length; i++){
             var z = autosNormalPos[i].transform.position.z;
             z = z > 200 ? 0 : z;
@@ -164,6 +153,13 @@ public class cars : MonoBehaviour
                 autosNormalNeg[i].transform.position = new Vector3(x, autosNormalNeg[i].transform.position.y, z + 0.25f);
             }
             
+        }
+    }
+
+    void OnCollisionEnter(Collision col){
+        Debug.Log("Crash");
+        if(col.gameObject.name == "Main Camera"){
+            Debug.Log("Tooooooooot");
         }
     }
 }
