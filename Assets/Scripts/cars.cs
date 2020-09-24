@@ -71,10 +71,32 @@ public class cars : MonoBehaviour
         var col = car.AddComponent<BoxCollider>();
         col.size = new Vector3(6.2f, 3f, 2.5f);
         col.center = new Vector3(0, 1f, 0);
-        //var carRend = gameObject.AddComponent<Renderer> ();
-        //carRend.material.color = Color.red;
+        //var carRend = car.AddComponent<MeshRenderer>();
+        Renderer[] component = car.GetComponentsInChildren<Renderer>();
+        Color color = getCarColor();
+        for (int i = 0; i < component.Length; i++)
+        {
+            if (component[i].name == "Dach" || component[i].name == "Unterbau"){
+                component[i].material.color = color;
+            } else {
+                component[i].material.color = Color.black;
+            }
+        }
         //car.transform.parent = autos.transform;
         return car;
+    }
+
+    Color getCarColor(){
+        Color c;
+        int rand = Random.Range(0, 3);
+        if (rand == 0){
+            c = Color.red;
+        } else if (rand == 1){
+            c = Color.blue;
+        } else {
+            c = Color.yellow;
+        }
+        return c;
     }
 
     // Update is called once per frame
