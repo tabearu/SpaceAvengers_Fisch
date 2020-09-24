@@ -17,37 +17,49 @@ public class cars : MonoBehaviour
     {       
         autosHighwayPos = new GameObject[4];
         autosHighwayNeg = new GameObject[4];
-        autosEinbahn = new GameObject[4];
+        autosEinbahn = new GameObject[5];
+        autosNormalPos = new GameObject[5];
+        autosNormalNeg = new GameObject[4];
         int j = 0;
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 22; i++){
             if (i < 4){
                 //highwayPos
-                float z = Random.Range(60f, 85.0f);
+                float z = i < 6 ? 72.5f : 85f;
                 float x = Random.Range(0f, 200.0f);
                 autosHighwayPos[i] = createCars(x,z,0f);
             } else if(i < 8){
                 //highwayNeg
-                float z = Random.Range(35f, 60.0f);
+                float z = i < 2 ? 40.5f : 53f;
                 float x = Random.Range(0f, 200.0f);
                 autosHighwayNeg[j] = createCars(x,z,180f);
                 j++;
-            } else if(i < 12){
+            } else if(i < 13){
                 j = i == 8 ? 0 : j;
-                var h = Random.Range(-1f, 1f);
-                if (h <= 0){
-                    float z = 130f;
-                    float x = Random.Range(0f, 200.0f);
-                    autosEinbahn[j] = createCars(x,z,0);
+                float z = i < 10 ? 130f : 170f;
+                float x = Random.Range(0f, 200.0f);
+                autosEinbahn[j] = createCars(x,z,0);
+                j++;
+            } else if (i < 18) {
+                j = i == 13 ? 0 : j;
+                float x = i < 16 ? 152f : 59f;
+                float z = Random.Range(0f, 200.0f);
+                autosNormalPos[j] = createCars(x,z,-90);
+                j++;
+            } else if (i < 22) {
+                j = i == 18 ? 0 : j;
+                float x;
+                float z;
+                if (i < 20){
+                    x = 165f;
+                    z = Random.Range(0f, 200.0f);
+                    autosNormalNeg[j] = createCars(x,z,90f); 
                 } else {
-                    float z = 170f;
-                    float x = Random.Range(0f, 200.0f);
-                    autosEinbahn[j] = createCars(x,z,0);
+                    x = Random.Range(0f, 200.0f);
+                    z = 72.5f;
+                    autosNormalNeg[j] = createCars(x,z,0f);
                 }
                 j++;
-            } else {
-                //normal
             } 
-            //GameObject car = createCars(Random.Range(0f, 200.0f), Random.Range(0f, 200.0f));
         }
     }
 
@@ -72,19 +84,64 @@ public class cars : MonoBehaviour
             var x = autosHighwayPos[i].transform.position.x;
             x = x > 200 ? 0 : x;
             x = x < 0 ? 200 : x;
-            autosHighwayPos[i].transform.position = new Vector3(x - 0.5f, autosHighwayPos[i].transform.position.y, autosHighwayPos[i].transform.position.z);
+            autosHighwayPos[i].transform.position = new Vector3(x - 0.25f, autosHighwayPos[i].transform.position.y, autosHighwayPos[i].transform.position.z);
         }
         for (int i = 0; i < autosHighwayNeg.Length; i++){
             var x = autosHighwayNeg[i].transform.position.x;
             x = x > 200 ? 0 : x;
             x = x < 0 ? 200 : x;
-            autosHighwayNeg[i].transform.position = new Vector3(x + 0.5f, autosHighwayNeg[i].transform.position.y, autosHighwayNeg[i].transform.position.z);
+            autosHighwayNeg[i].transform.position = new Vector3(x + 0.25f, autosHighwayNeg[i].transform.position.y, autosHighwayNeg[i].transform.position.z);
         }
         for (int i = 0; i < autosEinbahn.Length; i++){
             var x = autosEinbahn[i].transform.position.x;
             x = x > 200 ? 0 : x;
             x = x < 0 ? 200 : x;
-            autosEinbahn[i].transform.position = new Vector3(x - 0.5f, autosEinbahn[i].transform.position.y, autosEinbahn[i].transform.position.z);
+            autosEinbahn[i].transform.position = new Vector3(x - 0.25f, autosEinbahn[i].transform.position.y, autosEinbahn[i].transform.position.z);
+        }
+        for (int i = 0; i < autosNormalPos.Length; i++){
+            var z = autosNormalPos[i].transform.position.z;
+            z = z > 200 ? 0 : z;
+            z = z < 0 ? 200 : z;
+            if (z <= 74f && z > 72f) {
+                autosNormalPos[i].transform.Rotate(0.0f, 90f, 0.0f);
+                autosNormalPos[i].transform.position = new Vector3(autosNormalPos[i].transform.position.x  - 0.25f, autosNormalPos[i].transform.position.y, 72f);
+            }
+            if (autosNormalPos[i].transform.position.x != 59f){
+                var x = autosNormalPos[i].transform.position.x;
+                if (x < 0){
+                    autosNormalPos[i].transform.Rotate(0.0f, -90f, 0.0f);
+                    autosNormalPos[i].transform.position = new Vector3(59f, autosNormalPos[i].transform.position.y, 200f);
+                } else {
+                    autosNormalPos[i].transform.position = new Vector3(x  - 0.25f, autosNormalPos[i].transform.position.y, autosNormalPos[i].transform.position.z);
+                }
+            } else {
+                autosNormalPos[i].transform.position = new Vector3(autosNormalPos[i].transform.position.x, autosNormalPos[i].transform.position.y, z - 0.25f);
+            }
+            
+        }
+
+
+        for (int i = 0; i < autosNormalNeg.Length; i++){
+            var z = autosNormalNeg[i].transform.position.z;
+            var x = autosNormalNeg[i].transform.position.x;
+            if(x == 71f && z > 200){
+                z = 72.5f;
+                autosNormalNeg[i].transform.Rotate(0.0f, -90f, 0.0f);
+                x = 200f;
+            } else  if(z > 200){
+                z = 0;
+            }
+            //z = z < 0 ? 200 : z;
+            if (z == 72.5f && x != 165f){
+                autosNormalNeg[i].transform.position = new Vector3(x - 0.251f, autosNormalNeg[i].transform.position.y, z);
+                if (x < 70f && x >= 69f){  
+                    autosNormalNeg[i].transform.Rotate(0.0f, 90f, 0.0f);
+                    autosNormalNeg[i].transform.position = new Vector3(71f, autosNormalNeg[i].transform.position.y, z + 0.25f);
+                }
+            } else {
+                autosNormalNeg[i].transform.position = new Vector3(x, autosNormalNeg[i].transform.position.y, z + 0.25f);
+            }
+            
         }
     }
 }
