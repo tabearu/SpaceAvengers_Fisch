@@ -35,8 +35,15 @@ public class cars : MonoBehaviour
                
             } else if (i < 18) {
                 j = i == 13 ? 0 : j;
-                float x = i < 16 ? 152f : 59f;
-                float z = Random.Range(0f, 200.0f);
+                float x;
+                float z;
+                if (i < 16){
+                    x = 152f;
+                    z = Random.Range(0f, 200.0f);
+                } else {
+                    x = 59f;
+                    z = Random.Range(72f, 200.0f);
+                }
                 autosNormalPos[j] = createCars(x,z,-90);
                 j++;
             } else if (i < 22) {
@@ -111,24 +118,21 @@ public class cars : MonoBehaviour
         
         for (int i = 0; i < autosNormalPos.Length; i++){
             var z = autosNormalPos[i].transform.position.z;
-            z = z > 200 ? 0 : z;
+            var x = autosNormalPos[i].transform.position.x;
+            //z = z > 200 ? 0 : z;
             z = z < 0 ? 200 : z;
-            if (z <= 74f && z > 72f) {
-                autosNormalPos[i].transform.Rotate(0.0f, 90f, 0.0f);
-                autosNormalPos[i].transform.position = new Vector3(autosNormalPos[i].transform.position.x  - 0.25f, autosNormalPos[i].transform.position.y, 72f);
-            }
-            if (autosNormalPos[i].transform.position.x != 59f){
-                var x = autosNormalPos[i].transform.position.x;
-                if (x < 0){
-                    autosNormalPos[i].transform.Rotate(0.0f, -90f, 0.0f);
-                    autosNormalPos[i].transform.position = new Vector3(59f, autosNormalPos[i].transform.position.y, 200f);
-                } else {
-                    autosNormalPos[i].transform.position = new Vector3(x  - 0.25f, autosNormalPos[i].transform.position.y, autosNormalPos[i].transform.position.z);
-                }
-            } else {
-                autosNormalPos[i].transform.position = new Vector3(autosNormalPos[i].transform.position.x, autosNormalPos[i].transform.position.y, z - 0.25f);
-            }
             
+            if (z <= 74f && z > 72f && x == 59f) {
+                autosNormalPos[i].transform.Rotate(0.0f, 90f, 0.0f);
+                autosNormalPos[i].transform.position = new Vector3(x  - 0.25f, autosNormalPos[i].transform.position.y, 72.1f);
+            } else if (x == 152f || x == 59f){
+                autosNormalPos[i].transform.position = new Vector3(x, autosNormalPos[i].transform.position.y, z - 0.25f);
+            } else if (x < 0){
+                autosNormalPos[i].transform.Rotate(0.0f, -90f, 0.0f);
+                autosNormalPos[i].transform.position = new Vector3(59f, autosNormalPos[i].transform.position.y, 200f);
+            } else{
+                autosNormalPos[i].transform.position = new Vector3(x  - 0.25f, autosNormalPos[i].transform.position.y, z);
+            }            
         }
 
 
