@@ -50,10 +50,10 @@ public class kanalisationWasser : MonoBehaviour
         wVertices.Add(new Vector3(x + 1, randomY(), z + 1));
         wVertices.Add(new Vector3(x + 1, randomY(), z));
 
-        wUvs.Add(new Vector2(0,0));
-        wUvs.Add(new Vector2(1,1));
-        wUvs.Add(new Vector2(0,1));
-        wUvs.Add(new Vector2(1,0));
+        wUvs.Add(new Vector2(0, 0));
+        wUvs.Add(new Vector2(1, 1));
+        wUvs.Add(new Vector2(0, 1));
+        wUvs.Add(new Vector2(1, 0));
 
         //A
         wTriangles.Add(vert);
