@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneSwitcher : MonoBehaviour
 {
+    public Canvas canvas;
+    public Dropdown dropdown;
+    void start(){
+        canvas.GetComponent<Canvas>();
+    }
+
     public void HandleInputData(int val){
         switch (val){
             case 0:
@@ -23,6 +30,10 @@ public class SceneSwitcher : MonoBehaviour
                 break;
             case 5:
                 switchScene("AlexHome");
+                break;
+            case 6:
+                canvas.enabled = false;
+                dropdown.value = 0;
                 break;
             default:
                 switchScene("dorfScene");
