@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioWalking : MonoBehaviour
+public class audioPlayer : MonoBehaviour
 {
     
     AudioSource audioSrc;

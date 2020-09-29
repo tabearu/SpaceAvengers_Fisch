@@ -25,19 +25,19 @@ public class FirstPersonPlayer : MonoBehaviour
         if(canvas.enabled == false){
             if(Input.GetKey(KeyCode.W)){
                 this.camera.transform.Translate(Vector3.forward * 0.1f);
-                gameObject.GetComponent<AudioWalking> ().playAudio();
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             if(Input.GetKey(KeyCode.A)){
                 this.camera.transform.transform.Translate(-Vector3.right * 0.1f);
-                gameObject.GetComponent<AudioWalking> ().playAudio();
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             if(Input.GetKey(KeyCode.S)){
                 this.camera.transform.transform.Translate(-Vector3.forward * 0.1f);
-                gameObject.GetComponent<AudioWalking> ().playAudio();
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             if(Input.GetKey(KeyCode.D)){
                 this.camera.transform.transform.Translate(Vector3.right * 0.1f);
-                gameObject.GetComponent<AudioWalking> ().playAudio();
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             
             y += speedH * Input.GetAxis("Mouse X");
