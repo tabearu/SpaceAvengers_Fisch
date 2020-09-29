@@ -132,7 +132,7 @@ public class Streetlamps : MonoBehaviour {
         light.type = LightType.Spot;
         light.range = 10;
         light.spotAngle = 75;
-        light.intensity = 50;
+        light.intensity = 30;
         lightGO.transform.Rotate (90.0f, 0, 0);
         lightGO.transform.position = new Vector3 (x - (size / 2), height + (size / 2), z + size + (height / 3) / 0.75f);
         light.color = new Color (214.0f / 255f, 240.0f / 255f, 255.0f / 255f);
