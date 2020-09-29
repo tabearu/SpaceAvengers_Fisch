@@ -15,14 +15,4 @@ public class carSpeed : MonoBehaviour
         standing = false;
     }
 
-    public void wait(){
-        speed = 0;
-        standing = true;
-        StartCoroutine(waiter());
-    }
-
-    IEnumerator waiter(){
-        yield return new WaitForSeconds(5);
-    }
-
 }

@@ -14,46 +14,46 @@ public class cars : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {       
-        autosHighwayPos = new GameObject[3];
-        autosHighwayNeg = new GameObject[3];
-        autosNormalPos = new GameObject[4];
+        autosHighwayPos = new GameObject[2];
+        autosHighwayNeg = new GameObject[2];
+        autosNormalPos = new GameObject[3];
         autosNormalNeg = new GameObject[3];
         int j = 0;
-        for (int i = 0; i < 13; i++){
-            if (i < 3){
+        for (int i = 0; i < 10; i++){
+            if (i < 2){
                 //highwayPos
                 float z = 72.5f;
                 float x = Random.Range(0f, 200.0f);
                 autosHighwayPos[i] = createCars(x,z,0f);
-            } else if(i < 6){
+            } else if(i < 4){
                 //highwayNeg
                 float z = 53f;
                 float x = Random.Range(0f, 200.0f);
                 autosHighwayNeg[j] = createCars(x,z,180f);
                 j++;
-            } else if(i < 10){
-               j = i == 6 ? 0 : j;
+            } else if(i < 7){
+               j = i == 4 ? 0 : j;
                 float x;
                 float z;
-                if (i < 16){
+                if (i < 5){
                     x = 152f;
                     z = Random.Range(0f, 200.0f);
                 } else {
-                    x = 59f;
+                    x = 61f;
                     z = Random.Range(72f, 200.0f);
                 }
                 autosNormalPos[j] = createCars(x,z,-90);
                 j++;
-            } else if (i < 13) {
-                j = i == 10 ? 0 : j;
+            } else if (i < 10) {
+                j = i == 7 ? 0 : j;
                 float x;
-                float z;
-                if (i < 20){
+                float z; 
+                if (i < 9){
                     x = 165f;
                     z = Random.Range(0f, 200.0f);
                     autosNormalNeg[j] = createCars(x,z,90f); 
                 } else {
-                    x = Random.Range(0f, 200.0f);
+                    x = Random.Range(70f, 200.0f);
                     z = 72.5f;
                     autosNormalNeg[j] = createCars(x,z,0f);
                 }
@@ -64,16 +64,54 @@ public class cars : MonoBehaviour
     }
 
     GameObject createCars(float x, float z, float r){
+        
         GameObject car = Instantiate<GameObject> (auto);
         car.transform.position = new Vector3(x, 1f, z);
         car.transform.localScale = new Vector3 (2f, 2f, 3f);
         car.transform.Rotate(0.0f, r, 0.0f);
 
-        var col = car.AddComponent<BoxCollider>();
-        col.isTrigger = true;
-        col.size = new Vector3(8f, 3f, 3f);
-        col.center = new Vector3(0f, 1f, 0);
-        //var carRend = car.AddComponent<MeshRenderer>();
+        GameObject left = new GameObject("Left-Col");
+        left.transform.position = new Vector3(x, 1f, z);
+        left.transform.localScale = new Vector3 (2f, 2f, 3f);
+        left.transform.Rotate(0.0f, r, 0.0f);
+        var colleft = left.AddComponent<BoxCollider>();
+        colleft.isTrigger = true;
+        colleft.size = new Vector3(8f, 3f, 1f);
+        colleft.center = new Vector3(0f, 1f, -1.5f);
+
+        GameObject right = new GameObject("Right-Col");
+        right.transform.position = new Vector3(x, 1f, z);
+        right.transform.localScale = new Vector3 (2f, 2f, 3f);
+        right.transform.Rotate(0.0f, r, 0.0f);
+        var rightcol = right.AddComponent<BoxCollider>();
+        rightcol.isTrigger = true;
+        rightcol.size = new Vector3(8f, 3f, 1f);
+        rightcol.center = new Vector3(0f, 1f, 1.5f);
+
+        GameObject back = new GameObject("Back-Col");
+        back.transform.position = new Vector3(x, 1f, z);
+        back.transform.localScale = new Vector3 (2f, 2f, 3f);
+        back.transform.Rotate(0.0f, r, 0.0f);
+        var backcol = back.AddComponent<BoxCollider>();
+        backcol.isTrigger = true;
+        backcol.size = new Vector3(2f, 3f, 2f);
+        backcol.center = new Vector3(3f, 1f, 0);
+
+        GameObject front = new GameObject("Front-Col");
+        front.transform.position = new Vector3(x, 1f, z);
+        front.transform.localScale = new Vector3 (2f, 2f, 3f);
+        front.transform.Rotate(0.0f, r, 0.0f);
+        var frontcol = front.AddComponent<BoxCollider>();
+        frontcol.isTrigger = true;
+        frontcol.size = new Vector3(2f, 3f, 2f);
+        frontcol.center = new Vector3(-3f, 1f, 0);
+
+        left.transform.parent = car.transform;
+        right.transform.parent = car.transform;
+        back.transform.parent = car.transform;
+        front.transform.parent = car.transform;
+        
+        
         Renderer[] component = car.GetComponentsInChildren<Renderer>();
         Color color = getCarColor();
         car.name = "auto";
@@ -133,14 +171,14 @@ public class cars : MonoBehaviour
             //z = z > 200 ? 0 : z;
             z = z < 0 ? 200 : z;
             
-            if (z <= 74f && z > 72f && x == 59f) {
+            if (z <= 74f && z > 72f && x == 61f) {
                 autosNormalPos[i].transform.Rotate(0.0f, 90f, 0.0f);
                 autosNormalPos[i].transform.position = new Vector3(x  - speed, autosNormalPos[i].transform.position.y, 72.1f);
-            } else if (x == 152f || x == 59f){
+            } else if (x == 152f || x == 61f){
                 autosNormalPos[i].transform.position = new Vector3(x, autosNormalPos[i].transform.position.y, z - speed);
             } else if (x < 0){
                 autosNormalPos[i].transform.Rotate(0.0f, -90f, 0.0f);
-                autosNormalPos[i].transform.position = new Vector3(59f, autosNormalPos[i].transform.position.y, 200f);
+                autosNormalPos[i].transform.position = new Vector3(61f, autosNormalPos[i].transform.position.y, 200f);
             } else{
                 autosNormalPos[i].transform.position = new Vector3(x  - speed, autosNormalPos[i].transform.position.y, z);
             }            
@@ -161,7 +199,7 @@ public class cars : MonoBehaviour
             //z = z < 0 ? 200 : z;
             if (z == 72.5f && x != 165f){
                 autosNormalNeg[i].transform.position = new Vector3(x - 0.251f, autosNormalNeg[i].transform.position.y, z);
-                if (x < 70f && x >= 69f){  
+                if (x < 70f && x > 69.7f){  
                     autosNormalNeg[i].transform.Rotate(0.0f, 90f, 0.0f);
                     autosNormalNeg[i].transform.position = new Vector3(71f, autosNormalNeg[i].transform.position.y, z + speed);
                 }
