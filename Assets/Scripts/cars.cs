@@ -14,27 +14,25 @@ public class cars : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {       
-        autosHighwayPos = new GameObject[4];
-        autosHighwayNeg = new GameObject[4];
-        autosNormalPos = new GameObject[5];
-        autosNormalNeg = new GameObject[4];
+        autosHighwayPos = new GameObject[3];
+        autosHighwayNeg = new GameObject[3];
+        autosNormalPos = new GameObject[4];
+        autosNormalNeg = new GameObject[3];
         int j = 0;
-        for (int i = 0; i < 22; i++){
-            if (i < 4){
+        for (int i = 0; i < 13; i++){
+            if (i < 3){
                 //highwayPos
-                float z = i < 6 ? 72.5f : 85f;
+                float z = 72.5f;
                 float x = Random.Range(0f, 200.0f);
                 autosHighwayPos[i] = createCars(x,z,0f);
-            } else if(i < 8){
+            } else if(i < 6){
                 //highwayNeg
-                float z = i < 2 ? 40.5f : 53f;
+                float z = 53f;
                 float x = Random.Range(0f, 200.0f);
                 autosHighwayNeg[j] = createCars(x,z,180f);
                 j++;
-            } else if(i < 13){
-               
-            } else if (i < 18) {
-                j = i == 13 ? 0 : j;
+            } else if(i < 10){
+               j = i == 6 ? 0 : j;
                 float x;
                 float z;
                 if (i < 16){
@@ -46,8 +44,8 @@ public class cars : MonoBehaviour
                 }
                 autosNormalPos[j] = createCars(x,z,-90);
                 j++;
-            } else if (i < 22) {
-                j = i == 18 ? 0 : j;
+            } else if (i < 13) {
+                j = i == 10 ? 0 : j;
                 float x;
                 float z;
                 if (i < 20){
@@ -62,6 +60,7 @@ public class cars : MonoBehaviour
                 j++;
             } 
         }
+
     }
 
     GameObject createCars(float x, float z, float r){
@@ -69,12 +68,15 @@ public class cars : MonoBehaviour
         car.transform.position = new Vector3(x, 1f, z);
         car.transform.localScale = new Vector3 (2f, 2f, 3f);
         car.transform.Rotate(0.0f, r, 0.0f);
+
         var col = car.AddComponent<BoxCollider>();
-        col.size = new Vector3(6.2f, 3f, 2.5f);
-        col.center = new Vector3(0, 1f, 0);
+        col.isTrigger = true;
+        col.size = new Vector3(8f, 3f, 3f);
+        col.center = new Vector3(0f, 1f, 0);
         //var carRend = car.AddComponent<MeshRenderer>();
         Renderer[] component = car.GetComponentsInChildren<Renderer>();
         Color color = getCarColor();
+        car.name = "auto";
         for (int i = 0; i < component.Length; i++)
         {
             if (component[i].name == "Dach" || component[i].name == "Unterbau"){
@@ -83,7 +85,12 @@ public class cars : MonoBehaviour
                 component[i].material.color = Color.black;
             }
         }
-        //car.transform.parent = autos.transform;
+        car.AddComponent<carSpeed>();
+        var rig = car.AddComponent<Rigidbody>();
+        rig.isKinematic = true;
+        rig.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
+        car.AddComponent<carCollider>();
+
         return car;
     }
 
@@ -103,20 +110,24 @@ public class cars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+                                    
         for (int i = 0; i < autosHighwayPos.Length; i++){
+            var speed = autosHighwayPos[i].GetComponent<carSpeed>().speed;
             var x = autosHighwayPos[i].transform.position.x;
             x = x > 200 ? 0 : x;
             x = x < 0 ? 200 : x;
-            autosHighwayPos[i].transform.position = new Vector3(x - 0.25f, autosHighwayPos[i].transform.position.y, autosHighwayPos[i].transform.position.z);
+            autosHighwayPos[i].transform.position = new Vector3(x - speed, autosHighwayPos[i].transform.position.y, autosHighwayPos[i].transform.position.z);
         }
         for (int i = 0; i < autosHighwayNeg.Length; i++){
+            var speed = autosHighwayNeg[i].GetComponent<carSpeed>().speed;
             var x = autosHighwayNeg[i].transform.position.x;
             x = x > 200 ? 0 : x;
             x = x < 0 ? 200 : x;
-            autosHighwayNeg[i].transform.position = new Vector3(x + 0.25f, autosHighwayNeg[i].transform.position.y, autosHighwayNeg[i].transform.position.z);
+            autosHighwayNeg[i].transform.position = new Vector3(x + speed, autosHighwayNeg[i].transform.position.y, autosHighwayNeg[i].transform.position.z);
         }
         
         for (int i = 0; i < autosNormalPos.Length; i++){
+            var speed = autosNormalPos[i].GetComponent<carSpeed>().speed;
             var z = autosNormalPos[i].transform.position.z;
             var x = autosNormalPos[i].transform.position.x;
             //z = z > 200 ? 0 : z;
@@ -124,19 +135,20 @@ public class cars : MonoBehaviour
             
             if (z <= 74f && z > 72f && x == 59f) {
                 autosNormalPos[i].transform.Rotate(0.0f, 90f, 0.0f);
-                autosNormalPos[i].transform.position = new Vector3(x  - 0.25f, autosNormalPos[i].transform.position.y, 72.1f);
+                autosNormalPos[i].transform.position = new Vector3(x  - speed, autosNormalPos[i].transform.position.y, 72.1f);
             } else if (x == 152f || x == 59f){
-                autosNormalPos[i].transform.position = new Vector3(x, autosNormalPos[i].transform.position.y, z - 0.25f);
+                autosNormalPos[i].transform.position = new Vector3(x, autosNormalPos[i].transform.position.y, z - speed);
             } else if (x < 0){
                 autosNormalPos[i].transform.Rotate(0.0f, -90f, 0.0f);
                 autosNormalPos[i].transform.position = new Vector3(59f, autosNormalPos[i].transform.position.y, 200f);
             } else{
-                autosNormalPos[i].transform.position = new Vector3(x  - 0.25f, autosNormalPos[i].transform.position.y, z);
+                autosNormalPos[i].transform.position = new Vector3(x  - speed, autosNormalPos[i].transform.position.y, z);
             }            
         }
 
 
         for (int i = 0; i < autosNormalNeg.Length; i++){
+            var speed = autosNormalNeg[i].GetComponent<carSpeed>().speed;
             var z = autosNormalNeg[i].transform.position.z;
             var x = autosNormalNeg[i].transform.position.x;
             if(x == 71f && z > 200){
@@ -151,19 +163,13 @@ public class cars : MonoBehaviour
                 autosNormalNeg[i].transform.position = new Vector3(x - 0.251f, autosNormalNeg[i].transform.position.y, z);
                 if (x < 70f && x >= 69f){  
                     autosNormalNeg[i].transform.Rotate(0.0f, 90f, 0.0f);
-                    autosNormalNeg[i].transform.position = new Vector3(71f, autosNormalNeg[i].transform.position.y, z + 0.25f);
+                    autosNormalNeg[i].transform.position = new Vector3(71f, autosNormalNeg[i].transform.position.y, z + speed);
                 }
             } else {
-                autosNormalNeg[i].transform.position = new Vector3(x, autosNormalNeg[i].transform.position.y, z + 0.25f);
+                autosNormalNeg[i].transform.position = new Vector3(x, autosNormalNeg[i].transform.position.y, z + speed);
             }
             
         }
-    }
 
-    void OnCollisionEnter(Collision col){
-        Debug.Log("Crash");
-        if(col.gameObject.name == "Main Camera"){
-            Debug.Log("Tooooooooot");
-        }
     }
 }
