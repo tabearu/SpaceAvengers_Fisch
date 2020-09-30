@@ -23,7 +23,7 @@ public class LightByTime : MonoBehaviour
     GameObject lightGONight;
 
     float timeInSecForGameDay = 12.0f;
-    float currentTimeOfDayInSec = 0.0f;
+    float currentTimeOfDayInHours = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,46 +38,69 @@ public class LightByTime : MonoBehaviour
         lightGONight = new GameObject("Moon");
         lightNight = lightGONight.AddComponent<Light>();
         lightNight.type = LightType.Directional;
-        lightGONight.transform.position = new Vector3(sceneSizeX/2, 0.0f, offset*-1);
-        lightGONight.transform.Rotate(0.0f, 30, 0);
+        lightGONight.transform.position = new Vector3(sceneSizeX/2, 0.0f, (sceneSizeZ/2) * -1);
+        lightGONight.transform.Rotate(0.0f, -30, 0);
         lightNight.intensity = 0;
-        lightNight.color = new Color(217.0f/255f, 241.0f/255f, 255.0f/255f);
+        lightNight.color = new Color(62.0f/255f, 85.0f/255f, 99.0f/255f);
 
-        InvokeRepeating("movement", 1.0f, 1.0f);
+        InvokeRepeating("movement", 1.0f, timeInSecForGameDay/12f);
     }
 
     void movement(){
         //rotation der lichtrichtung
         float omega = 180.0f / timeInSecForGameDay * -1;
-        Vector3 middle = new Vector3(sceneSizeX/2, 0, (sceneSizeZ+(offset/2))/2 );
-        lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
-        lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+        Vector3 middle = new Vector3(sceneSizeX/2, 0, sceneSizeZ/2 );
+        Debug.Log("currentTime: " + currentTimeOfDayInHours + " tag-In: " + lightDay.intensity + " night-In: " + lightNight.intensity);
 
-        currentTimeOfDayInSec++;
-        if (currentTimeOfDayInSec >= timeInSecForGameDay) {
-            currentTimeOfDayInSec = 0.0f;
+        currentTimeOfDayInHours++;
+        if (currentTimeOfDayInHours == 11f && day){ 
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightNight.intensity = 0.8f;
+        } else if (currentTimeOfDayInHours == 12f && day){       
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightDay.intensity = 0;
+            currentTimeOfDayInHours = 0;
+            day = false;
+        } else if (currentTimeOfDayInHours == 11f && !day){
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightDay.intensity = 1f;
+        } else if (currentTimeOfDayInHours == 12f && !day){
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightNight.intensity = 0;
+            currentTimeOfDayInHours = 0;
+            day = true;
+        } else {
+            lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+            lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+        }
+
+        /*
+        if (currentTimeOfDayInHours == 12f) {
+            currentTimeOfDayInHours = 0.0f;
             if (day){
-                var sonne = 0.8f;
-                var mond = 0.2f;
-                for (int i  = 0; i < 5; i++){
-                    lightDay.intensity = sonne;
-                    lightNight.intensity = mond;
-                    mond = mond < 0.8f ? mond+0.2f : mond;
-                    sonne -= 0.2f;
-                }
+                Debug.Log("Day to night switch");
+                lightDay.intensity = 0;
+                lightNight.intensity = 0.8f;
                 day = false;
             } else {
-                var sonne = 0.2f;
-                var mond = 0.6f;
-                for (int i  = 0; i < 5; i++){
-                    lightDay.intensity = sonne;
-                    lightNight.intensity = mond;
-                    mond = mond > 0 ? mond-0.2f : mond;
-                    sonne += 0.2f;
-                }
+                Debug.Log("Night to day switch");
+                lightDay.intensity = 1f;
+                lightNight.intensity = 0;
                 day = true;
             }
         } 
+        
+        lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+        lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
+        */
     }  
     
     
