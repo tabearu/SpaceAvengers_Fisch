@@ -129,12 +129,13 @@ public class cars : MonoBehaviour {
         rig.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
         car.AddComponent<carCollider> ();
 
+        /*
         var audio = car.AddComponent<AudioSource>();
         audio.clip = Resources.Load("Sounds/car") as AudioClip;
         audio.loop = true;
         audio.volume = 0.001f;
         audio.Play();
-        
+        */
 
         car.transform.parent = autos.transform;
 

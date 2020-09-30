@@ -77,10 +77,25 @@ public class City : MonoBehaviour
         meshCity.RecalculateNormals();
 
         Vector2[] uvs = new Vector2[vertices.Length];
+        j = 0;
         for (i = 0; i < uvs.Length; i++){
-            uvs[i] = new Vector2(vertices[i].x, vertices[i].y);           
+            if(j < 2 || j > 3 && j < 6){
+                uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
+            } else {     
+                uvs[i] = new Vector2(vertices[i].z, vertices[i].y); 
+            }          
+            j = j == 7 ? 0 : j+1;
         }
         meshCity.uv = uvs;
+
+        /*
+        if(j <= 3){
+                uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
+            } else {     
+                uvs[i] = new Vector2(vertices[i].z, vertices[i].y); 
+            }          
+            j = j == 7 ? 0 : j+1;
+        */
 
         Renderer rend = gameObject.GetComponent<Renderer> ();
         rend.material = Resources.Load("Materials/ApartmentBuilding") as Material;
@@ -116,7 +131,7 @@ public class City : MonoBehaviour
     }
 
     int[] addTr(int[] triangles, int trCount, int vtCount){
-        //ABC + ACD rechts
+        //ABC + ACD hinten
         triangles[trCount+0] = vtCount+3;
         triangles[trCount+1] = vtCount+1;
         triangles[trCount+2] = vtCount+0;
@@ -140,7 +155,7 @@ public class City : MonoBehaviour
         triangles[trCount+16] = vtCount+7;
         triangles[trCount+17] = vtCount+5; 
 
-        //DCE + CEF hinten
+        //DCE + CEF rechts
         triangles[trCount+18] = vtCount+5;
         triangles[trCount+19] = vtCount+4;
         triangles[trCount+20] = vtCount+2;

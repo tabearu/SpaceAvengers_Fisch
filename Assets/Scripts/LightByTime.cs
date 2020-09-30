@@ -50,8 +50,8 @@ public class LightByTime : MonoBehaviour
         //rotation der lichtrichtung
         float omega = 180.0f / timeInSecForGameDay * -1;
         Vector3 middle = new Vector3(sceneSizeX/2, 0, sceneSizeZ/2 );
+        //Debug.Log("Time: " + currentTimeOfDayInHours +  " day: " + lightDay.intensity +  " night: " + lightNight.intensity);
         
-        currentTimeOfDayInHours++;
         if (currentTimeOfDayInHours == 11f && day){ 
             lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
@@ -62,7 +62,7 @@ public class LightByTime : MonoBehaviour
             lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             lightDay.intensity = 0;
-            currentTimeOfDayInHours = 0;
+            currentTimeOfDayInHours = 1;
             day = false;
         } else if (currentTimeOfDayInHours == 11f && !day){
             lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
@@ -74,39 +74,13 @@ public class LightByTime : MonoBehaviour
             lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             lightNight.intensity = 0;
-            currentTimeOfDayInHours = 0;
+            currentTimeOfDayInHours = 1;
             day = true;
         } else {
             lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
         }
 
-        /*
-        if (currentTimeOfDayInHours == 12f) {
-            currentTimeOfDayInHours = 0.0f;
-            if (day){
-                Debug.Log("Day to night switch");
-                lightDay.intensity = 0;
-                lightNight.intensity = 0.8f;
-                day = false;
-            } else {
-                Debug.Log("Night to day switch");
-                lightDay.intensity = 1f;
-                lightNight.intensity = 0;
-                day = true;
-            }
-        } 
-        
-        lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
-        lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
-        */
+        currentTimeOfDayInHours++;
     }  
-    
-    
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
