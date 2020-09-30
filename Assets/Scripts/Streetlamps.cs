@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Streetlamps : MonoBehaviour {
 
+    GameObject lamps;
     Mesh meshCity;
     float size;
     int height;
@@ -147,7 +148,7 @@ public class Streetlamps : MonoBehaviour {
         int[] triangles; //verk    
         triangles = new int[66 * amount];
         vertices = new Vector3[14 * amount];
-        GameObject lamps = new GameObject("Streetlamps");
+        lamps = new GameObject("Streetlamps");
 
         for (int i = 0; i < amount; i++) {
             vertices = addVert (vertices, pos[i, 0], pos[i, 1], vertCount);
@@ -168,5 +169,16 @@ public class Streetlamps : MonoBehaviour {
 
     }
 
-    void Update () { }
+    void Update () { 
+        bool day = gameObject.transform.parent.GetComponent<LightByTime>().day;
+        if (day){
+            for (int i = 0; i < amount; i++){
+                lamps.transform.GetChild(i).GetComponent<Light>().intensity = 0;
+            }
+        } else {
+            for (int i = 0; i < amount; i++){
+                lamps.transform.GetChild(i).GetComponent<Light>().intensity = 30f;
+            }
+        }
+    }
 }

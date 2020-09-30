@@ -156,7 +156,24 @@ public class cars : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        movement();
+        
+        //turn car lights on/off 
+        bool day = gameObject.transform.parent.GetComponent<LightByTime>().day;
+        if (day){
+            for (int i = 0; i < autos.transform.childCount; i++){
+                autos.transform.GetChild(i).transform.GetChild(1).GetComponent<Light>().intensity = 0;
+                autos.transform.GetChild(i).transform.GetChild(2).GetComponent<Light>().intensity = 0;
+            }
+        } else {
+            for (int i = 0; i < autos.transform.childCount; i++){
+                autos.transform.GetChild(i).transform.GetChild(1).GetComponent<Light>().intensity = 10f;
+                autos.transform.GetChild(i).transform.GetChild(2).GetComponent<Light>().intensity = 10f;
+            }
+        }
+    }
 
+    void movement(){
         for (int i = 0; i < autosHighwayPos.Length; i++) {
             var speed = autosHighwayPos[i].GetComponent<carSpeed> ().speed;
             var x = autosHighwayPos[i].transform.position.x;
@@ -214,6 +231,5 @@ public class cars : MonoBehaviour {
             }
 
         }
-
     }
 }

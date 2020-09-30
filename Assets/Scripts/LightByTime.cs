@@ -14,7 +14,7 @@ public class LightByTime : MonoBehaviour
 
     float offset = 100.0f;
 
-    bool day = true;
+    public bool day = true;
 
     Light lightDay;
     GameObject lightGODay;
@@ -50,8 +50,7 @@ public class LightByTime : MonoBehaviour
         //rotation der lichtrichtung
         float omega = 180.0f / timeInSecForGameDay * -1;
         Vector3 middle = new Vector3(sceneSizeX/2, 0, sceneSizeZ/2 );
-        Debug.Log("currentTime: " + currentTimeOfDayInHours + " tag-In: " + lightDay.intensity + " night-In: " + lightNight.intensity);
-
+        
         currentTimeOfDayInHours++;
         if (currentTimeOfDayInHours == 11f && day){ 
             lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
