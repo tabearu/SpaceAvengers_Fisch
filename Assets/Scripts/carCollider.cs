@@ -5,7 +5,7 @@ using UnityEngine;
 public class carCollider : MonoBehaviour {
 
     void OnTriggerEnter (Collider col) {
-        Collider collider = gameObject.transform.GetChild (11).GetComponent<Collider> (); //Front-Collider
+        Collider collider = gameObject.transform.GetChild(gameObject.transform.childCount-1).GetComponent<Collider> (); //Front-Collider
         //Debug.Log ("Gameobject: " + gameObject.name + " collided with: " + col.gameObject.name);
 
         if (col.gameObject.name == "Main Camera") {
