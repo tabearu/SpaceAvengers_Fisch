@@ -14,7 +14,7 @@ public class FirstPersonPlayer : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         camera = Camera.main;
         canvas.GetComponent<Canvas>();
     }
@@ -23,25 +23,23 @@ public class FirstPersonPlayer : MonoBehaviour
     void Update()
     {
         if(canvas.enabled == false){
-            Vector3 pos = this.camera.transform.position;
             if(Input.GetKey(KeyCode.W)){
                 this.camera.transform.Translate(Vector3.forward * 0.1f);
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             if(Input.GetKey(KeyCode.A)){
                 this.camera.transform.transform.Translate(-Vector3.right * 0.1f);
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             if(Input.GetKey(KeyCode.S)){
                 this.camera.transform.transform.Translate(-Vector3.forward * 0.1f);
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
             if(Input.GetKey(KeyCode.D)){
                 this.camera.transform.transform.Translate(Vector3.right * 0.1f);
+                gameObject.GetComponent<audioPlayer> ().playAudio();
             }
-            if (Input.GetMouseButtonDown(0)){
-                this.camera.transform.transform.Rotate(0,-10.0f,0);
-            }
-            if (Input.GetMouseButtonDown(1)){
-                this.camera.transform.transform.Rotate(0,10.0f,0);
-            } 
+            
             y += speedH * Input.GetAxis("Mouse X");
             //x -= speedV * Input.GetAxis("Mouse Y");
 
