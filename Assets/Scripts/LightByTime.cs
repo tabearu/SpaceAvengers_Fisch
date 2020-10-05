@@ -90,7 +90,6 @@ public class LightByTime : MonoBehaviour
             //6-18Uhr
             int time = (int)currentTimeOfDayInHours + 6;
             result = time.ToString() + ":00 Uhr";
-            Debug.Log(currentTimeOfDayInHours);
         } else if (!day && currentTimeOfDayInHours > 5){
             //1-5 Uhr
             int time = (int)currentTimeOfDayInHours - 6;
