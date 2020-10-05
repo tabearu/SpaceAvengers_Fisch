@@ -26,9 +26,13 @@ public class LightByTime : MonoBehaviour
     float timeInSecForGameDay = 12.0f;
     float currentTimeOfDayInHours = 0.0f;
 
+    bool secondRound = false;
+
     // Start is called before the first frame update
     void Start()
     {
+
+
         if (showLight){
             lightGODay = new GameObject("Sun");
             lightDay = lightGODay.AddComponent<Light>();
@@ -53,14 +57,15 @@ public class LightByTime : MonoBehaviour
         //rotation der lichtrichtung
         float omega = 180.0f / timeInSecForGameDay * -1;
         Vector3 middle = new Vector3(sceneSizeX/2, 0, sceneSizeZ/2 );
-        //Debug.Log("Time: " + currentTimeOfDayInHours +  " day: " + lightDay.intensity +  " night: " + lightNight.intensity);
-        
+        Debug.Log("Time: " + currentTimeOfDayInHours +  " day: " + lightDay.intensity +  " night: " + lightNight.intensity);
+        //Debug.Log("Log: " + currentTimeOfDayInHours +  " Time: " + getTime());
+
         if(showLight){
-            if (currentTimeOfDayInHours == 10f && day){ 
+            if (currentTimeOfDayInHours == 10f && day && !secondRound || currentTimeOfDayInHours == 9f && day && secondRound){ 
                 lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightNight.intensity = 0.8f;
-            } else if (currentTimeOfDayInHours == 11f && day){       
+            } else if (currentTimeOfDayInHours == 11f && day && !secondRound || currentTimeOfDayInHours == 10f && day && secondRound){       
                 lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
@@ -68,11 +73,11 @@ public class LightByTime : MonoBehaviour
                 lightDay.intensity = 0;
                 currentTimeOfDayInHours = -1;
                 day = false;
-            } else if (currentTimeOfDayInHours == 10f && !day){
+            } else if (currentTimeOfDayInHours == 10f && !day && !secondRound || currentTimeOfDayInHours == 9f && !day && secondRound){
                 lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightDay.intensity = 1f;
-            } else if (currentTimeOfDayInHours == 11f && !day){
+            } else if (currentTimeOfDayInHours == 11f && !day && !secondRound || currentTimeOfDayInHours == 10f && !day && secondRound){
                 lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
@@ -80,12 +85,13 @@ public class LightByTime : MonoBehaviour
                 lightNight.intensity = 0;
                 currentTimeOfDayInHours = -1;
                 day = true;
+                secondRound = true;
             } else {
                 lightGODay.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
                 lightGONight.transform.RotateAround( middle, new Vector3(1.0f, 0, 0), omega);
             }
         } else {
-            if (currentTimeOfDayInHours == 11f){
+            if (currentTimeOfDayInHours == 11f || currentTimeOfDayInHours == 10f && secondRound){
                 day = day ? false : true;
                 currentTimeOfDayInHours = -1;
             }
