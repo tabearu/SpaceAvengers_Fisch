@@ -2397,6 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e9d5e1053d174b8a6505f020078fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showLight: 1
   day: 1
 --- !u!4 &2079952187
 Transform:
