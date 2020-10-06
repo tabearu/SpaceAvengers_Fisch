@@ -54,20 +54,25 @@ public class LightByTime : MonoBehaviour {
     }
 
     void manualInit () {
-        lightGODay = new GameObject ("Sun");
-        lightDay = lightGODay.AddComponent<Light> ();
-        lightDay.type = LightType.Directional;
-        lightGODay.transform.position = new Vector3 (sceneSizeX / 2, 0.0f, sceneSizeZ + offset);
-        lightGODay.transform.Rotate (180.0f, 30, 0);
-        lightDay.color = new Color (255.0f / 255f, 244.0f / 255f, 214.0f / 255f);
+        if (GameObject.Find("Sun") == null){
+            lightGODay = new GameObject ("Sun");
+            lightDay = lightGODay.AddComponent<Light> ();
+            lightDay.type = LightType.Directional;
+            lightGODay.transform.position = new Vector3 (sceneSizeX / 2, 0.0f, sceneSizeZ + offset);
+            lightGODay.transform.Rotate (180.0f, 30, 0);
+            lightDay.color = new Color (255.0f / 255f, 244.0f / 255f, 214.0f / 255f);
+        }
+        if (GameObject.Find("Moon") == null){
+            lightGONight = new GameObject ("Moon");
+            lightNight = lightGONight.AddComponent<Light> ();
+            lightNight.type = LightType.Directional;
+            lightGONight.transform.position = new Vector3 (sceneSizeX / 2, 0.0f, (sceneSizeZ / 2) * -1);
+            lightGONight.transform.Rotate (0.0f, -30, 0);
+            lightNight.intensity = 0;
+            lightNight.color = new Color (62.0f / 255f, 85.0f / 255f, 99.0f / 255f);
+        }
 
-        lightGONight = new GameObject ("Moon");
-        lightNight = lightGONight.AddComponent<Light> ();
-        lightNight.type = LightType.Directional;
-        lightGONight.transform.position = new Vector3 (sceneSizeX / 2, 0.0f, (sceneSizeZ / 2) * -1);
-        lightGONight.transform.Rotate (0.0f, -30, 0);
-        lightNight.intensity = 0;
-        lightNight.color = new Color (62.0f / 255f, 85.0f / 255f, 99.0f / 255f);
+        
     }
 
     void movement () {
