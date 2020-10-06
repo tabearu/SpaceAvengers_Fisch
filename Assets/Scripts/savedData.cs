@@ -88,4 +88,14 @@ public class savedData : MonoBehaviour {
             File.AppendAllText(path, "First:true");
         }
     }
+
+    string read (string key){
+        var lines = File.ReadAllLines (path);
+        foreach (var line in lines) {
+            if (line.Contains (key)) {
+                return line;
+            }
+        }
+        return "";
+    }
 }

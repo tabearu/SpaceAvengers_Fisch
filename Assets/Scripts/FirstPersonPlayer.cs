@@ -32,7 +32,7 @@ public class FirstPersonPlayer : MonoBehaviour
         try {
             videoPlaying = GameObject.Find("Video").GetComponent<videoPlayer>().playing;
         } catch {
-            videoPlaying = true;
+            videoPlaying = false;
         }
 
         if(canvas.enabled == false && !videoPlaying){
