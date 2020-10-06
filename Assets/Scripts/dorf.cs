@@ -66,15 +66,15 @@ public class dorf : MonoBehaviour
         hMesh = new Mesh();
         this.GetComponent<MeshFilter>().mesh = hMesh;
 
-        MeshCollider hCollider = gameObject.AddComponent<MeshCollider>();
+        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = hMesh;
         Rigidbody hBody = gameObject.AddComponent<Rigidbody>();
         hBody.isKinematic = true;
 
         hMesh.vertices = hVertices.ToArray();
         hMesh.triangles = hTriangles.ToArray();
         hMesh.uv = hUvs.ToArray();
-
-        hCollider.sharedMesh = hMesh;
+        
         hMesh.RecalculateNormals();
     }
 
