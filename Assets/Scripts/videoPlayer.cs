@@ -7,6 +7,7 @@ using UnityEngine.Video;
 public class videoPlayer : MonoBehaviour {
 
     bool restartAudio = false;
+    public bool playing;
 
     /*
     void Start () {
@@ -33,6 +34,7 @@ public class videoPlayer : MonoBehaviour {
         if (!vp.isPlaying) {
             GameObject.Find ("Start_Skript").GetComponent<AudioSource> ().Stop ();
             vp.Play ();
+            playing = true;
             InvokeRepeating ("checkOver", .1f, .1f);
         }
     }
@@ -43,6 +45,7 @@ public class videoPlayer : MonoBehaviour {
             GameObject.Find ("Start_Skript").GetComponent<AudioSource> ().Play ();
             Destroy (GameObject.Find ("Main Camera/Canvas/RawImage"));
             restartAudio = true;
+            playing = false;
             //Destroy RawImage
         }
     }
