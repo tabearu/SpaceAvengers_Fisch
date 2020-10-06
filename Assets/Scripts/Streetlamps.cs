@@ -170,7 +170,7 @@ public class Streetlamps : MonoBehaviour {
     }
 
     void Update () { 
-        bool day = gameObject.transform.parent.GetComponent<LightByTime>().day;
+        bool day = GameObject.Find("LightByTime").GetComponent<LightByTime>().day;
         if (day){
             for (int i = 0; i < amount; i++){
                 lamps.transform.GetChild(i).GetComponent<Light>().intensity = 0;

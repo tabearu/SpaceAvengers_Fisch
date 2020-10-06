@@ -160,7 +160,7 @@ public class cars : MonoBehaviour {
         movement();
         
         //turn car lights on/off 
-        bool day = gameObject.transform.parent.GetComponent<LightByTime>().day;
+        bool day = GameObject.Find("LightByTime").GetComponent<LightByTime>().day;
         if (day){
             for (int i = 0; i < autos.transform.childCount; i++){
                 autos.transform.GetChild(i).transform.GetChild(1).GetComponent<Light>().intensity = 0;
