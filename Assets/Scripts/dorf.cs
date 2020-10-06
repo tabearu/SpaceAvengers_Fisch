@@ -11,6 +11,8 @@ public class dorf : MonoBehaviour
 
     Mesh hMesh;
 
+    public Material material;
+
     //Größe Häuser
     int a = 6;
     int b = 8;
@@ -54,7 +56,7 @@ public class dorf : MonoBehaviour
         gameObject.AddComponent<MeshRenderer>();
         
         Renderer dorfRend = this.GetComponent<MeshRenderer>();
-        dorfRend.material = new Material(Shader.Find("Diffuse"));
+        dorfRend.material = material;
         
         //Häuser
         for(int i = 0; i < koordinaten.Count; i++){
