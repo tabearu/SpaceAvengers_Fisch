@@ -33,7 +33,7 @@ public class LightByTime : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
         if (showLight) {
-            Debug.Log ("init");
+            //Debug.Log ("init");
             lightGODay = new GameObject ("Sun");
             lightDay = lightGODay.AddComponent<Light> ();
             lightDay.type = LightType.Directional;
@@ -155,7 +155,7 @@ public class LightByTime : MonoBehaviour {
                 secondRound = true;
             }
 
-            Debug.Log ("Time: " + time + " day: " + day + " current: " + currentTimeOfDayInHours + " show: " + showLight);
+            //Debug.Log ("Time: " + time + " day: " + day + " current: " + currentTimeOfDayInHours + " show: " + showLight);
             if (day && showLight) {
                 lightNight.intensity = 0;
                 lightDay.intensity = 1f;
@@ -198,7 +198,7 @@ public class LightByTime : MonoBehaviour {
     }
 
     public string getTimeHour () {
-        string result = "Time:";
+        string result = "";
         if (day) {
             //6-18Uhr
             int time = (int) currentTimeOfDayInHours + 6;

@@ -44,6 +44,10 @@ public class SceneSwitcher : MonoBehaviour
     public void switchScene(string name){
         GameObject.Find("Start_Skript").GetComponent<savedData>().saveGameTime();
         SceneManager.LoadScene(name);
+        if (name == "PlayerHome"){
+            Destroy(GameObject.Find ("Video"));
+            Destroy(GameObject.Find ("Main Camera/Canvas/RawImage"));
+        }
         GameObject.Find("Start_Skript").GetComponent<savedData>().setGameTime();
         
     }
