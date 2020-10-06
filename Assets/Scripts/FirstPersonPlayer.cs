@@ -13,6 +13,7 @@ public class FirstPersonPlayer : MonoBehaviour
     float x = 0.0f;
 
     bool videoPlaying;
+    bool dialogueDisplayed;
 
     // Start is called before the first frame update
     void Start()
@@ -21,21 +22,19 @@ public class FirstPersonPlayer : MonoBehaviour
         canvas.GetComponent<Canvas>();
         try {
             videoPlaying = GameObject.Find("Video").GetComponent<videoPlayer>().playing;
+            dialogueDisplayed = GameObject.Find("DialogScript").GetComponent<Dialogues>().dialogueIsDisplayed;
         } catch {
             videoPlaying = false;
+            dialogueDisplayed = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {   
-        try {
-            videoPlaying = GameObject.Find("Video").GetComponent<videoPlayer>().playing;
-        } catch {
-            videoPlaying = false;
-        }
-
-        if(canvas.enabled == false && !videoPlaying){
+        tryCatchBools();
+        
+        if(canvas.enabled == false && !videoPlaying && !dialogueDisplayed){
             if(Input.GetKey(KeyCode.W)){
                 this.camera.transform.Translate(Vector3.forward * 0.1f);
                 gameObject.GetComponent<audioPlayer> ().playAudio();
@@ -59,5 +58,19 @@ public class FirstPersonPlayer : MonoBehaviour
             this.camera.transform.eulerAngles = new Vector3(x, y, 0.0f);
         }
         
+    }
+
+    void tryCatchBools(){
+        try {
+            videoPlaying = GameObject.Find("Video").GetComponent<videoPlayer>().playing;
+            
+        } catch {
+            videoPlaying = false;
+        }
+        try{
+            dialogueDisplayed = GameObject.Find("DialogScript").GetComponent<Dialogues>().dialogueIsDisplayed;
+        } catch {
+            dialogueDisplayed = false;
+        }
     }
 }
