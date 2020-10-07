@@ -2,3 +2,5 @@ Entscheidungen
 
 Time:18
 First:false
+Schluessel:True
+Kanalisation-Hinweis:True

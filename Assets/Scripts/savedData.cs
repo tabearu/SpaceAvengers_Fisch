@@ -15,6 +15,9 @@ public class savedData : MonoBehaviour {
 
     string path;
 
+    GameObject alexliegend;
+    GameObject alexsitzend;
+
     public VideoClip startsequenz;
 
     void getDocument () {
@@ -29,7 +32,7 @@ public class savedData : MonoBehaviour {
 
     void Start () {
         getDocument ();
-        checkFirstStart();
+        checkFirstStart ();
     }
 
     public void saveGameTime () {
@@ -72,11 +75,11 @@ public class savedData : MonoBehaviour {
         bool lineFound = false;
         foreach (var line in lines) {
             if (line.Contains ("First:true")) {
-                var v = GameObject.Find("Video").AddComponent<videoPlayer>();
-                v.playVideo();
+                var v = GameObject.Find ("Video").AddComponent<videoPlayer> ();
+                v.playVideo ();
                 writer.WriteLine ("First:false");
                 firstStart = false;
-            } else if (line.Contains ("First:false")){
+            } else if (line.Contains ("First:false")) {
                 writer.WriteLine (line);
                 lineFound = true;
             } else {
@@ -84,37 +87,61 @@ public class savedData : MonoBehaviour {
             }
         }
         writer.Close ();
-        if (firstStart && !lineFound){
-            File.AppendAllText(path, "First:true");
+        if (firstStart && !lineFound) {
+            File.AppendAllText (path, "First:true");
         }
     }
 
-    string read (string key){
-        var lines = File.ReadAllLines (path);
-        foreach (var line in lines) {
-            if (line.Contains (key)) {
-                return line;
-            }
-        }
-        return "";
-    }
-
-    public bool writeLine(string key){
+    bool read (string key) {
         var lines = File.ReadAllLines (path);
         foreach (var line in lines) {
             if (line.Contains (key)) {
                 return true;
             }
         }
-        File.AppendAllText(path, key);
         return false;
     }
 
-    public void checkForEnding(){
-        GameObject.Find("Main Camera/Canvas/RawImage").SetActive(true);
-        var v = GameObject.Find("Video").AddComponent<videoPlayer>();
-        v.endingVideo = true;
-        v.playVideo();
+    public bool writeLine (string key) {
+        var lines = File.ReadAllLines (path);
+        foreach (var line in lines) {
+            if (line.Contains (key)) {
+                return true;
+            }
+        }
+        File.AppendAllText (path, key);
+        return false;
+    }
+
+    public void checkForEnding () {
+        GameObject.Find ("Main Camera/Canvas/RawImage").SetActive (true);
+        if (inTime () && hinweise ()) {
+            var v = GameObject.Find ("Alex_sitzend").AddComponent<videoPlayer> ();
+            v.endingVideo = true;
+            v.playVideo ();
+            GameObject.Find ("Main Camera/Canvas/TimeString").SetActive (false);
+        } else {
+            var v = GameObject.Find ("Alex_liegend").AddComponent<videoPlayer> ();
+            v.endingVideo = true;
+            v.playVideo ();
+            GameObject.Find ("Main Camera/Canvas/TimeString").SetActive (false);
+        }
+
+    }
+
+    bool inTime () {
+        int x = int.Parse (GameObject.Find ("LightByTime").GetComponent<LightByTime> ().getTimeHour ());
+        if (x >= 18 && x < 22) {
+            return true;
+        }
+        return false;
+    }
+
+    bool hinweise () {
+        if (read ("Kanalisation-Hinweis:True") && read ("Schluessel:True")) {
+            return true;
+        }
+        return false;
     }
 
 }

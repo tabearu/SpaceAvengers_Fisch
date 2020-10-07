@@ -50,7 +50,7 @@ public class LightByTime : MonoBehaviour {
             lightNight.color = new Color (62.0f / 255f, 85.0f / 255f, 99.0f / 255f);
         }
 
-        InvokeRepeating ("movement", 1.0f, timeInSecForGameDay / 12f);
+        InvokeRepeating ("movement", 1.0f, 180f);
     }
 
     void manualInit () {
