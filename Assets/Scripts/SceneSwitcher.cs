@@ -32,6 +32,9 @@ public class SceneSwitcher : MonoBehaviour
                 switchScene("AlexHome");
                 break;
             case 6:
+                switchScene("Woods");
+                break;
+            case 7:
                 canvas.enabled = false;
                 dropdown.value = 0;
                 break;
