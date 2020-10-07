@@ -13,18 +13,54 @@ public class Dialogues : MonoBehaviour
     GameObject btn3;
     public bool dialogueIsDisplayed;
 
-    string [] dialoge = new string[11] {
+    string [] dialoge = new string[39] {
         "Der Brief beschäftigt mich immer noch, aber ich sollte wirklich erst arbeiten.",
         "Mist. Zu spät. Jetzt gibt es bestimmt wieder Stress mit dem Chef.",
         "Okay ich bin bei Alex… aber nach was genau soll ich jetzt suchen? Vielleicht gibt es irgendwo einen Hinweis.",
         "Hey, wie geht’s? Hast du Alex gesehen? Ich habe sie eine Weile nicht gesehen und mache mir Sorgen.",
         "Nein, seit letzter Woche nicht mehr, aber sie meinte sie hat wohl irgendeinen neuen Auftrag bekommen. Muss wohl interessant sein, so wie sie sich damit beschäftigt hat.",
+        //5
         "Ich denke sie ist bei Ihrem neuen Freund.",
         "Ein neuer Freund?",
         "Ich habe Sie letzte Woche mit einem Typen gesehen. Groß, schwarze Haare, Anzug, mit Sonnenbrille. Bisschen gruselig. Als ich sie darauf angesprochen habe meinte sie, sie hätte ihn auf der Arbeit kennengelernt. Ich glaube sein Name war NAME-AGENT. ",
         "Ein neuer Auftrag?",
         "Ja, muss wohl sehr wichtig sein, denn der Chef persönlich hat ihr den Auftrag gegeben. Allerdings fand ich es etwas seltsam. Sie sollte dafür jemanden treffen, in diesem neuen Café… ähm… CAFÉ-NAME, glaube ich?",
-        "Alles klar. Danke"
+        //10
+        "Alles klar. Danke",
+        "Schönes Wetter heute, oder? Da ist so ein Spaziergang doch wirklich schön",
+        "Gestern ist mein Goldfisch gestorben. Ich habe ihn so geliebt. Aber ich konnte ihn nicht begraben, das habe ich nicht übers Herz gebracht. Also habe ich ihn die Toilette runtergespült. Hoffentlich findet er es in der Kanalisation schön",
+        "Mache ich heute Nudeln oder Kartoffeln?",
+        "Nein, danke, ich kaufe nichts",
+        //15
+        "Wer sind Sie?",
+        "Sind Sie auch wegen des Kürbiswettbewerbs da?",
+        "Ständig diese Idioten aus der Stadt…",
+        "Ey! Das ist mein Auto!",
+        "Willst du was kaufen?",
+        //20
+        "Wo geht’s hier zur Uni?",
+        "Verschwinde!",
+        "Willst du was?",
+        "Hey, hast du Alex gesehen?",
+        "Wieso willst du das wissen?",
+        //25
+        "Also hast du Sie gesehen?",
+        "Es ist wichtig",
+        "Nein.",
+        "Hey, hast du Alex gesehen?",
+        "Ich habe gehört sie arbeitet jetzt für die Regierung.",
+        //30
+        "Nein, aber ich habe gehört Sie hat Ärger bekommen.",
+        "Wieso das?",
+        "Geht dich nichts an.",
+        "Hey, haben Sie hier kürzlich jemanden bedient der Alex hieß?",
+        "Ja, das werde ich nicht vergessen. Sie sah aus als wäre sie durch den Wald gerannt und dann kamen diese zwei Typen… War echt seltsam.",
+        //35
+        "Wissen Sie wo sie hin sind?",
+        "Nein, keine Ahnung.",
+        "Sie kam aus dem Wald?",
+        "Ja, sie hatte ein paar Blätter in den Haaren."
+        //39
     };
 
     void Start()

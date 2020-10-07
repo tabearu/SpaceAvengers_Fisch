@@ -16,7 +16,7 @@ public class InteractivePerson : MonoBehaviour {
     zweite und vierte Zahl sind die Antworten die auf die Buttons kommen
     dritte und fünfte sind die Antworten auf die Buttons
     */
-    public int[, ] dialogueOptions = new int[2, 5] { { 4, 8, 9, 0, 0 }, { 5, 6, 7, 0, 0 } };
+    public int[, ] dialogueOptions = new int[4, 5] { { 4, 8, 9, 0, 0 }, { 5, 6, 7, 0, 0 } , {24,25,27,26,27}, {34,35,36,37,38}};
     string normalName;
 
     int index = 0;
