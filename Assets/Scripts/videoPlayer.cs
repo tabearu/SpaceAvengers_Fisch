@@ -8,6 +8,7 @@ public class videoPlayer : MonoBehaviour {
 
     bool restartAudio = false;
     public bool playing;
+    public bool endingVideo = false;
 
     /*
     void Start () {
@@ -41,7 +42,7 @@ public class videoPlayer : MonoBehaviour {
 
     void checkOver () {
         var vp = gameObject.GetComponent<VideoPlayer> ();
-        if (!vp.isPlaying && !restartAudio) {
+        if (!vp.isPlaying && !restartAudio && !endingVideo) {
             GameObject.Find ("Start_Skript").GetComponent<AudioSource> ().Play ();
             Destroy (GameObject.Find ("Main Camera/Canvas/RawImage"));
             restartAudio = true;

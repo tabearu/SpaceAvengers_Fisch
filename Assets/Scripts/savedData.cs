@@ -110,4 +110,11 @@ public class savedData : MonoBehaviour {
         return false;
     }
 
+    public void checkForEnding(){
+        GameObject.Find("Main Camera/Canvas/RawImage").SetActive(true);
+        var v = GameObject.Find("Video").AddComponent<videoPlayer>();
+        v.endingVideo = true;
+        v.playVideo();
+    }
+
 }

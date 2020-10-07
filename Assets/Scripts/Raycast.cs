@@ -6,6 +6,9 @@ public class Raycast : MonoBehaviour
 {
     public Canvas canvas;
     public Camera camera;
+
+    bool endingTrigger = false;
+
     // Start is called before the first frame update
     void Start()
     {

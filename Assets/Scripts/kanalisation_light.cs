@@ -7,10 +7,12 @@ public class kanalisation_light : MonoBehaviour
 
     GameObject go;
 
+
     // Start is called before the first frame update
     void Start()
     {   
         go  = GameObject.Find("Lights");
+        GameObject.Find("Main Camera/Canvas/RawImage").SetActive(false);
     }
 
 
