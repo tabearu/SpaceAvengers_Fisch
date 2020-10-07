@@ -98,4 +98,16 @@ public class savedData : MonoBehaviour {
         }
         return "";
     }
+
+    public bool writeLine(string key){
+        var lines = File.ReadAllLines (path);
+        foreach (var line in lines) {
+            if (line.Contains (key)) {
+                return true;
+            }
+        }
+        File.AppendAllText(path, key);
+        return false;
+    }
+
 }
