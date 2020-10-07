@@ -17,10 +17,10 @@ public class Dialogues : MonoBehaviour
         "Der Brief beschäftigt mich immer noch, aber ich sollte wirklich erst arbeiten.",
         "Mist. Zu spät. Jetzt gibt es bestimmt wieder Stress mit dem Chef.",
         "Okay ich bin bei Alex… aber nach was genau soll ich jetzt suchen? Vielleicht gibt es irgendwo einen Hinweis.",
-        "Hey, wie geht’s? Habt ihr Alex gesehen? Ich habe sie eine Weile nicht gesehen und mache mir Sorgen.",
+        "Hey, wie geht’s? Hast du Alex gesehen? Ich habe sie eine Weile nicht gesehen und mache mir Sorgen.",
         "Nein, seit letzter Woche nicht mehr, aber sie meinte sie hat wohl irgendeinen neuen Auftrag bekommen. Muss wohl interessant sein, so wie sie sich damit beschäftigt hat.",
-        "Ich denke eher sie ist bei Ihrem neuen Freund.",
-        "Sie hat einen neuen Freund",
+        "Ich denke sie ist bei Ihrem neuen Freund.",
+        "Ein neuer Freund?",
         "Ich habe Sie letzte Woche mit einem Typen gesehen. Groß, schwarze Haare, Anzug, mit Sonnenbrille. Bisschen gruselig. Als ich sie darauf angesprochen habe meinte sie, sie hätte ihn auf der Arbeit kennengelernt. Ich glaube sein Name war NAME-AGENT. ",
         "Ein neuer Auftrag?",
         "Ja, muss wohl sehr wichtig sein, denn der Chef persönlich hat ihr den Auftrag gegeben. Allerdings fand ich es etwas seltsam. Sie sollte dafür jemanden treffen, in diesem neuen Café… ähm… CAFÉ-NAME, glaube ich?",
@@ -48,7 +48,7 @@ public class Dialogues : MonoBehaviour
             dialogueIsDisplayed = true;
             btn3.GetComponent<Button>().interactable = true;    
             btn3.SetActive(true);
-            btn3.gameObject.transform.GetChild(0).GetComponent<Text>().text = "Beenden";
+            btn3.gameObject.transform.GetChild(0).GetComponent<Text>().text = "Tschüss";
         } else if (i == -1){
             disappear();
         } else {
@@ -84,16 +84,33 @@ public class Dialogues : MonoBehaviour
         if (buttonNumber == 1 && dialogueNumber < dialoge.Length){
             btn1.gameObject.transform.GetChild(0).GetComponent<Text>().text = dialoge[dialogueNumber];
             btn1.SetActive(true);
+            btn1.GetComponent<Button>().interactable = true; 
             var sc = btn1.AddComponent<UI_Buttons>();
             sc.dialogueNumber = followingDialogueNumber;
 
         } else if (buttonNumber == 2 && dialogueNumber < dialoge.Length){
             btn2.gameObject.transform.GetChild(0).GetComponent<Text>().text = dialoge[dialogueNumber];
             btn2.SetActive(true);
+            btn2.GetComponent<Button>().interactable = true; 
             var sc = btn2.AddComponent<UI_Buttons>();
             sc.dialogueNumber = followingDialogueNumber;
         }
         
+    }
+
+    public void setWeiterBtn(int followingDialogueNumber){
+        btn2.gameObject.transform.GetChild(0).GetComponent<Text>().text = "Weiter";
+        btn2.GetComponent<Button>().interactable = true; 
+        btn2.SetActive(true);
+        var sc = btn2.AddComponent<UI_Buttons>();
+        sc.dialogueNumber = followingDialogueNumber;
+    }
+
+    public void hideWeiterBtn(){
+        btn2.gameObject.transform.GetChild(0).GetComponent<Text>().text = "";
+        btn2.GetComponent<Button>().interactable = false; 
+        btn2.SetActive(false);
+        Destroy(btn2.GetComponent<UI_Buttons>());
     }
 
     public void showHintText(){
