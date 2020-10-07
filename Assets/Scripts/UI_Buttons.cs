@@ -18,5 +18,6 @@ public class UI_Buttons : MonoBehaviour
     void TaskOnClick(){
         Debug.Log("Button pressed");
         GameObject.Find("DialogScript").GetComponent<Dialogues>().setDialog(dialogueNumber);
+        GameObject.Find("aktiveUnterhaltungMitPerson").GetComponent<InteractivePerson>().setNextDialogue();
     }
 }
