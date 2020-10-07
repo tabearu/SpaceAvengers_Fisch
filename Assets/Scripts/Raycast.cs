@@ -20,13 +20,7 @@ public class Raycast : MonoBehaviour
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit)){
-            if(hit.collider.tag == "NPC_interaktiv"){
-               Debug.Log("NPC gefunden");
-               if(Input.GetKeyDown(KeyCode.E)){
-                    Debug.Log("angestupst");
-                }
-            }
-            else if(hit.collider.name == "Hinweis_blau"){
+            if(hit.collider.name == "Hinweis_blau"){
                 if(Input.GetKeyDown(KeyCode.E)){
                     canvas.enabled = true;
                 }

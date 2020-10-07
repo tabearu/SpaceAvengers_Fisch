@@ -5748,6 +5748,7 @@ GameObject:
   - component: {fileID: 2034250835}
   - component: {fileID: 2034250834}
   - component: {fileID: 2034250838}
+  - component: {fileID: 2034250837}
   m_Layer: 0
   m_Name: Start_Skript
   m_TagString: Untagged
@@ -5795,6 +5796,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &2034250837
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034250833}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d6617e36522e8e7469790b7190f2f04b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d6617e36522e8e7469790b7190f2f04b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &2034250838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10753,8 +10770,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679622023287963437}
-  - component: {fileID: 1679622023297798351}
   - component: {fileID: 1679622023288447756}
+  - component: {fileID: 1679622023288447758}
   m_Layer: 0
   m_Name: NPC stehen
   m_TagString: NPC_interaktiv
@@ -10773,7 +10790,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1679622023288447757
 GameObject:
@@ -10791,6 +10808,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1679622023288447758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679622023288447755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: dc1dacc99c42993499b968409533f7cb, type: 3}
+  m_Controller: {fileID: 9100000, guid: a6ae9d816c0c424458257678317cf66e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1679622023288447761
 GameObject:
   m_ObjectHideFlags: 0
@@ -11387,25 +11423,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1679622023297798351
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679622023288447755}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dc1dacc99c42993499b968409533f7cb, type: 3}
-  m_Controller: {fileID: 9100000, guid: d5c11a982b611c84e9414d14069781df, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!137 &1679622023302049283
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
