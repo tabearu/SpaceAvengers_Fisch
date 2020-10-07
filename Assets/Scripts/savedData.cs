@@ -26,9 +26,7 @@ public class savedData : MonoBehaviour {
             File.WriteAllText (path, "Entscheidungen \n\nTime:6\n");
             SceneManager.LoadScene ("PlayerHome");
             //File.AppendAllText(path, content);
-        } else {
-            SceneManager.LoadScene("PlayerHome");
-        }
+        } 
         setGameTime ();
     }
 
