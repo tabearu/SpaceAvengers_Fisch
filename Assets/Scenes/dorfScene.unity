@@ -16087,6 +16087,7 @@ GameObject:
   - component: {fileID: 1083573274}
   - component: {fileID: 1083573273}
   - component: {fileID: 1083573275}
+  - component: {fileID: 1083573276}
   m_Layer: 0
   m_Name: Start_Skript
   m_TagString: Untagged
@@ -16134,6 +16135,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startsequenz: {fileID: 0}
+--- !u!114 &1083573276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083573272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c5d970f1f211444a7525331170f801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1316966420}
+  camera: {fileID: 963194227}
 --- !u!1 &1086147395
 GameObject:
   m_ObjectHideFlags: 0
@@ -22930,26 +22945,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000948146, y: 0.638571, z: 0.045487106}
     m_Extent: {x: 0.09257585, y: 0.17953345, z: 0.106818214}
   m_DirtyAABB: 0
---- !u!1 &1617576486 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41a45d33b560cb4408fba2408bd0a36e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1172560970}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1617576487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617576486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: debdc66c8f35a304495ff9906a96e18b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 1316966420}
-  camera: {fileID: 963194227}
 --- !u!1 &1618376450
 GameObject:
   m_ObjectHideFlags: 0

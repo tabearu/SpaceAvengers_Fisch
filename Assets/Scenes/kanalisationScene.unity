@@ -738,26 +738,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &87297353 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41a45d33b560cb4408fba2408bd0a36e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1981223418}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &87297354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87297353}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: debdc66c8f35a304495ff9906a96e18b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 720682478}
-  camera: {fileID: 219922698}
 --- !u!1 &88456899
 GameObject:
   m_ObjectHideFlags: 0
