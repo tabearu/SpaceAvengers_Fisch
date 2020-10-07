@@ -8,9 +8,11 @@ public class kanalisationWasser : MonoBehaviour
     List<int> wTriangles = new List<int>();
     List<Vector2> wUvs = new List<Vector2>();
     Mesh mesh;
+
+    public Material material;
     //Größe Wasser
-    int x = 135;
-    int z = 120;
+    int x = 40;
+    int z = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class kanalisationWasser : MonoBehaviour
         }
         
         Renderer rend = this.GetComponent<MeshRenderer>();
-        rend.material = new Material(Shader.Find("Diffuse"));
+        rend.material = material;
 
         mesh = new Mesh();
         this.GetComponent<MeshFilter>().mesh = mesh;
