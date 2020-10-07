@@ -11,7 +11,7 @@ public class PlayerHomeWalls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        roomHeight = 4;
+        roomHeight = 5;
         CreateMesh();
         createWalls();
         

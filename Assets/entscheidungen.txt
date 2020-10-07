@@ -1,6 +1,4 @@
 Entscheidungen 
 
-Time:18
+Time:6
 First:false
-Schluessel:True
-Kanalisation-Hinweis:True
