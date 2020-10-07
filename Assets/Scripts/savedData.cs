@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class savedData : MonoBehaviour {
     //flags, die im Spiel gesetzt werden sollen, wenn etwas Scenen-übergreifend passieren soll
     //nicht bei reinen Infos
-    bool kampfGewonnen;
+    bool schluesselGefunden;
     bool arbeitPuenktlich;
     bool firstStart = true;
     bool firstStartOverride;
